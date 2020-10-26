@@ -29,6 +29,9 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_match @recipe1.name, response.body
     assert_match @recipe1.description, response.body
     assert_match @chef.chefname, response.body
+    assert_select 'a[href=?]', edit_recipe_path(@recipe1), text: "Edit this recipe"
+    assert_select 'a[href=?]', recipe_path(@recipe1), text: "Delete this recipe"
+    assert_select 'a[href=?]', recipes_path, text: "Return to recipes listing"
   end
 
   test "reject invalid recipe submissions" do
