@@ -65,8 +65,8 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, ingredient_ids: [])
-  end
+    params.require(:recipe).permit(:name, :description, :image, ingredient_ids: [])
+  end  
   
   def require_same_user
     if current_chef != @recipe.chef and !current_chef.admin?
