@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   resources :ingredients, except: [:destroy]
 
+  get '/chat', to: 'chatrooms#show'
+
+  resources :messages, only: [:create]
+
   mount ActionCable.server => '/cable'
 
 end
